@@ -28,26 +28,30 @@
 <div *ngIf="optionUpdate" padding>
 
   <ion-item>
-    Title :
+    <ion-label>Title</ion-label>
     <ion-input  [(ngModel)]= "selectedItem.title"></ion-input>
   </ion-item>
 
   <ion-item>
-    Content : <ion-input [(ngModel)]= "selectedItem.note"></ion-input> 
+    <ion-label>Content</ion-label>
+    <ion-input [(ngModel)]= "selectedItem.note"></ion-input> 
   </ion-item>
     
+
   <ion-item>
-    Categorie :
+      <ion-label>Date</ion-label>
+      <ion-datetime displayFormat="YYYY-MM-DD" [(ngModel)]="selectedItem.date"></ion-datetime>
+  </ion-item>
+    
+
+  <ion-item>
     <select class="form-control" required  [(ngModel)]="selectedItem.categorie.categorie" name="categorie">
       <option *ngFor="let cat of categories" [value]="cat.id" >{{cat.categorie}}</option>
     </select>
-  </ion-item>
+    : Categorie 
+  </ion-item> 
 
-  <ion-item>
-    <ion-label>Date</ion-label>
-    <ion-datetime displayFormat="YYYY-MM-DD" [(ngModel)]="selectedItem.date"></ion-datetime>
-  </ion-item>
-  
+
   <button ion-button [round]= true color="secondary" (click)="save()">
       <ion-icon>Save</ion-icon>
   </button>

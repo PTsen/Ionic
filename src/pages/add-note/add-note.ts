@@ -7,16 +7,6 @@ import{Categorie} from '../../app/categorie';
 import { HomePage } from '../../pages/home/home';
 import { ToastController } from 'ionic-angular';
 
-
-
-
-/**
- * Generated class for the AddNotePage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
-
 @Component({
   selector: 'page-add-note',
   templateUrl: 'add-note.html',

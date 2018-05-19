@@ -5,16 +5,6 @@ import { HomePage } from '../../pages/home/home';
 import { CategorieServiceProvider } from '../../providers/categorie-service/categorie-service';
 import { ToastController } from 'ionic-angular';
 
-
-
-
-/**
- * Generated class for the DetailscategoriePage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
-
 @Component({
   selector: 'page-detailsCategorie',
   templateUrl: 'detailsCategorie.html',

@@ -2,15 +2,9 @@ import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 import { NoteServicesProvider } from '../../providers/note-services/note-services';
 import { HomePage } from '../../pages/home/home';
-import{Note} from '../../app/Note'
 import{Categorie} from '../../app/categorie'
 import { CategorieServiceProvider } from '../../providers/categorie-service/categorie-service';
 import { ToastController } from 'ionic-angular';
-
-
-
-
-
 
 @Component({
   selector: 'page-details',
@@ -20,6 +14,7 @@ export class DetailsNotePage {
   selectedItem : any;
   optionUpdate:boolean;
   categories:Categorie[];
+  
   constructor(public navCtrl: NavController, public navParams: NavParams,
     private noteRestService : NoteServicesProvider,
     private categoriesRestService:CategorieServiceProvider,

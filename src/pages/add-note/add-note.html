@@ -10,24 +10,25 @@
 <ion-content padding>
 
   <ion-item>
-    Title :
-    <ion-input  [(ngModel)]= "note.title"></ion-input> 
+      <ion-label>Title</ion-label>
+    <ion-input  [(ngModel)]= "note.title" ></ion-input> 
   </ion-item>
 
   <ion-item>  
-    Content : <ion-input [(ngModel)]= "n"></ion-input> 
+      <ion-label>Content</ion-label>
+      <ion-input [(ngModel)]= "n" required></ion-input> 
   </ion-item>
 
     <ion-item>
     Categorie :
     <select class="form-control" required  [(ngModel)]="note.categorie" name="categorie">
-        <option *ngFor="let cat of categories" [value]="cat.id" >{{cat.categorie}}</option>
+        <option *ngFor="let cat of categories" [value]="cat.id" required>{{cat.categorie}}</option>
     </select>
   </ion-item>
 
     <ion-item>
       <ion-label>Date</ion-label>
-      <ion-datetime displayFormat="YYYY-MM-DD" [(ngModel)]="note.date"></ion-datetime>
+      <ion-datetime displayFormat="YYYY-MM-DD" [(ngModel)]="note.date" required></ion-datetime>
     </ion-item>
   
   <button ion-button [round]= true color="secondary" (click)="save()">

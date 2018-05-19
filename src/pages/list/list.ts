@@ -4,6 +4,7 @@ import { Categorie } from '../../app/categorie';
 import { CategorieServiceProvider } from '../../providers/categorie-service/categorie-service';
 import { DetailsCategoriePage } from '../detailsCategorie/detailsCategorie'
 import { HomePage } from '../../pages/home/home';
+import { ToastController } from 'ionic-angular';
 
 
 
@@ -19,7 +20,8 @@ export class Categories {
 
 
   constructor(public navCtrl: NavController, public navParams: NavParams,
-  private categoriesRestService:CategorieServiceProvider) {
+  private categoriesRestService:CategorieServiceProvider,
+  private toastCtrl: ToastController) {
     this.OptionAdd=false;
     this.getCategories();
   }
@@ -43,7 +45,21 @@ export class Categories {
   add(){
     this.categoriesRestService.addCategorie(this.categorie).subscribe(); 
     this.navCtrl.push(HomePage);
+    this.presentToast();
   }
 
+  presentToast() {
+    let toast = this.toastCtrl.create({
+      message: 'Categorie was added successfully',
+      duration: 1000,
+      position: 'middle'
+    });
+  
+    toast.onDidDismiss(() => {
+      console.log('Dismissed toast');
+    });
+  
+    toast.present();
+  }
   
 }
