@@ -1,0 +1,55 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Details</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding no-bounce>
+<h1>Details</h1>
+
+<div *ngIf="selectedItem" padding>
+  You navigated here from <b>{{selectedItem.title}}</b> <br>
+  Content : <span [innerHTML]="selectedItem.note"></span> <br>
+  Date : {{selectedItem.date | date :'yyyy-MM-dd'}} <br>
+  Categorie : {{selectedItem.categorie.categorie}}
+</div>
+
+<button ion-button (click)="update()">
+    <ion-icon>Edit</ion-icon>
+</button>
+
+<button ion-button color="danger" (click)="delete()">
+    <ion-icon >Delete</ion-icon>
+</button>
+
+<div *ngIf="optionUpdate" padding>
+
+  <ion-item>
+    Title :
+    <ion-input  [(ngModel)]= "selectedItem.title"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    Content : <ion-input [(ngModel)]= "selectedItem.note"></ion-input> 
+  </ion-item>
+    
+  <ion-item>
+    Categorie :
+    <select class="form-control" required  [(ngModel)]="selectedItem.categorie.categorie" name="categorie">
+      <option *ngFor="let cat of categories" [value]="cat.id" >{{cat.categorie}}</option>
+    </select>
+  </ion-item>
+
+  <ion-item>
+    <ion-label>Date</ion-label>
+    <ion-datetime displayFormat="YYYY-MM-DD" [(ngModel)]="selectedItem.date"></ion-datetime>
+  </ion-item>
+  
+  <button ion-button [round]= true color="secondary" (click)="save()">
+      <ion-icon>Save</ion-icon>
+  </button>
+</div>
+</ion-content>

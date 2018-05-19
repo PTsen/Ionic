@@ -1,23 +1,32 @@
 <ion-header>
-  <ion-navbar>
-    <button ion-button menuToggle>
-      <ion-icon name="menu"></ion-icon>
-    </button>
-    <ion-title>List</ion-title>
-  </ion-navbar>
+    <ion-navbar>
+      <ion-title>Categories</ion-title>
+        <ion-buttons end>
+          <button (click)="optionAdd()">
+            <ion-icon >Add new</ion-icon>
+          </button>
+        </ion-buttons>
+    </ion-navbar>
 </ion-header>
 
+
 <ion-content>
+  <h1>Liste</h1>
   <ion-list>
-    <button ion-item *ngFor="let item of items" (click)="itemTapped($event, item)">
-      <ion-icon [name]="item.icon" item-start></ion-icon>
-      {{item.title}}
-      <div class="item-note" item-end>
-        {{item.note}}
-      </div>
+    <button ion-item *ngFor="let cat of categories" (click)="details($event, cat)">
+      <ion-icon ></ion-icon>
+      {{cat.categorie}}
     </button>
   </ion-list>
-  <div *ngIf="selectedItem" padding>
-    You navigated here from <b>{{selectedItem.title}}</b>
+  
+  <div *ngIf="OptionAdd" padding>
+    <input [(ngModel)]="categorie" />    <br>  <br> 
+    <button ion-button [round]= true (click)="add()" >
+      <ion-icon name="star" >add</ion-icon>
+    </button>
   </div>
+    
+
+
 </ion-content>
+

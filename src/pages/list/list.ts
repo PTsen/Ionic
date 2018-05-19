@@ -1,37 +1,49 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
+import { Categorie } from '../../app/categorie';
+import { CategorieServiceProvider } from '../../providers/categorie-service/categorie-service';
+import { DetailsCategoriePage } from '../detailsCategorie/detailsCategorie'
+import { HomePage } from '../../pages/home/home';
+
+
 
 @Component({
   selector: 'page-list',
   templateUrl: 'list.html'
 })
-export class ListPage {
-  selectedItem: any;
-  icons: string[];
-  items: Array<{title: string, note: string, icon: string}>;
+export class Categories {
+  selectedItem: Categorie;
+  categories : Categorie[];
+  OptionAdd:boolean;
+  categorie : string;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
-    // If we navigated to this page, we will have an item available as a nav param
-    this.selectedItem = navParams.get('item');
 
-    // Let's populate this page with some filler content for funzies
-    this.icons = ['flask', 'wifi', 'beer', 'football', 'basketball', 'paper-plane',
-    'american-football', 'boat', 'bluetooth', 'build'];
-
-    this.items = [];
-    for (let i = 1; i < 11; i++) {
-      this.items.push({
-        title: 'Item ' + i,
-        note: 'This is item #' + i,
-        icon: this.icons[Math.floor(Math.random() * this.icons.length)]
-      });
-    }
+  constructor(public navCtrl: NavController, public navParams: NavParams,
+  private categoriesRestService:CategorieServiceProvider) {
+    this.OptionAdd=false;
+    this.getCategories();
   }
 
-  itemTapped(event, item) {
-    // That's right, we're pushing to ourselves!
-    this.navCtrl.push(ListPage, {
+  getCategories(): void {
+    this.categoriesRestService.getCategories()
+     .subscribe(categories => this.categories = categories);
+ }
+
+  details(event,item) {
+    this.navCtrl.push(DetailsCategoriePage, {
       item: item
     });
   }
+
+  optionAdd(){
+    this.OptionAdd=true;
+
+  }
+
+  add(){
+    this.categoriesRestService.addCategorie(this.categorie).subscribe(); 
+    this.navCtrl.push(HomePage);
+  }
+
+  
 }

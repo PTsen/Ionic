@@ -1,0 +1,26 @@
+<ion-header>
+
+    <ion-navbar>
+      <ion-title>Details</ion-title>
+    </ion-navbar>
+  
+  </ion-header>
+  
+  
+  <ion-content padding>
+  <h1>Details</h1>
+  
+  <div *ngIf="selectedItem" padding>
+      <input [(ngModel)]="selectedItem.categorie" />  
+  </div>
+  
+  <button ion-button (click)="update()">
+      <ion-icon>Edit</ion-icon>
+  </button>
+  
+  <button ion-button color="danger" (click)="onDelete()">
+      <ion-icon >Delete</ion-icon>
+  </button>
+  
+  </ion-content>
+  

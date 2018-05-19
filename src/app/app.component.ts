@@ -4,7 +4,13 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
 import { HomePage } from '../pages/home/home';
-import { ListPage } from '../pages/list/list';
+import { Categories } from '../pages/list/list';
+import { DetailsNotePage } from '../pages/detailsNote/detailsNote';
+import { DetailsCategoriePage } from '../pages/detailsCategorie/detailsCategorie';
+import { AddNotePage } from '../pages/add-note/add-note';
+
+import { NotesPage } from '../pages/notes/notes';
+
 
 @Component({
   templateUrl: 'app.html'
@@ -21,18 +27,21 @@ export class MyApp {
 
     // used for an example of ngFor and navigation
     this.pages = [
-      { title: 'Home', component: HomePage },
-      { title: 'List', component: ListPage }
+      { title: 'Notes', component: NotesPage },
+      { title: 'Categorie', component: Categories }
     ];
 
   }
 
+  
   initializeApp() {
     this.platform.ready().then(() => {
       // Okay, so the platform is ready and our plugins are available.
       // Here you can do any higher level native things you might need.
       this.statusBar.styleDefault();
       this.splashScreen.hide();
+      
+
     });
   }
 

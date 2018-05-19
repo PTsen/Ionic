@@ -1,0 +1,22 @@
+
+    <ion-header>
+        <ion-navbar>
+          <ion-title>  Note</ion-title>
+          <ion-buttons end>
+              <button (click)="add()">
+                <ion-icon >Add new</ion-icon>
+              </button>
+            </ion-buttons>
+        </ion-navbar>
+    </ion-header>
+    
+  <ion-content>
+    <ion-list>
+      <button ion-item *ngFor="let note of notes" (click)="click($event, note)">
+       
+       <h2>Title : {{note.title}}</h2> 
+  
+      </button>
+    </ion-list>
+  </ion-content>
+  

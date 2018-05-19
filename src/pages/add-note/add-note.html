@@ -1,0 +1,38 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>New Note</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+
+  <ion-item>
+    Title :
+    <ion-input  [(ngModel)]= "note.title"></ion-input> 
+  </ion-item>
+
+  <ion-item>  
+    Content : <ion-input [(ngModel)]= "n"></ion-input> 
+  </ion-item>
+
+    <ion-item>
+    Categorie :
+    <select class="form-control" required  [(ngModel)]="note.categorie" name="categorie">
+        <option *ngFor="let cat of categories" [value]="cat.id" >{{cat.categorie}}</option>
+    </select>
+  </ion-item>
+
+    <ion-item>
+      <ion-label>Date</ion-label>
+      <ion-datetime displayFormat="YYYY-MM-DD" [(ngModel)]="note.date"></ion-datetime>
+    </ion-item>
+  
+  <button ion-button [round]= true color="secondary" (click)="save()">
+      <ion-icon>Save</ion-icon>
+  </button>
+
+
+</ion-content>
